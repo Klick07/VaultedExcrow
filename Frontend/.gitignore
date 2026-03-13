@@ -8,6 +8,9 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+public/fox_model.glb
+public/space_station-transformed.glb
+public/vault.glb
 dist
 dist-ssr
 *.local

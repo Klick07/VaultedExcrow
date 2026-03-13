@@ -1,5 +1,27 @@
 import React from 'react'
 
+const API = "http://localhost:3000/gov";
+
+async function login(username, password) {
+  const res = await fetch(`${API}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    console.log("Login failed");
+    return false;
+  }
+
+  console.log("Login successful");
+  const refreshTokenValue = data.refreshToken || null;
+
+  return true;
+}
+
+
 function Login() {
   return (
      <div className="min-h-screen [background:radial-gradient(ellipse_at_center,_#1a2535_0%,_#080d14_100%)]">
