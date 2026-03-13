@@ -1,0 +1,9 @@
+So this is going to be my secret template in which I will add whatever I have learned till now and some other features which are common in all the projects so that i can just copy paste in other projects from here in case of emergencies or it will work more like a reference
+
+Things which i will be adding 
+
+1)authorization and authentication routes using jwt & bcrypt
+2)custom error class
+3)central error middleware
+4)express-validator error middleware
+5)health check endpoints 

@@ -1,0 +1,50 @@
+-- CREATE DATABASE
+
+CREATE DATABASE template;
+
+
+--ACCESS THE DATABASE TO ADD TABLES
+\c template
+
+
+-- ADD REQUIRED EXTENSIONS
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+-- CREATE USERS TABLE FOR AUTH 
+CREATE TABLE users(
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    username TEXT UNIQUE NOT NULL,
+    hpassword TEXT NOT NULL,
+    role TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    is_revoked BOOLEAN DEFAULT FALSE
+);
+
+-- CREATE INDEX FOR USERS TABLE
+ CREATE UNIQUE INDEX idx_username ON users(username);
+
+
+-- CREATE REFRESH TOKEN TABLE FOR JWT
+CREATE TABLE refresh_tokens(
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    refresh_hash TEXT NOT NULL,
+    revoked BOOLEAN  NOT NULL DEFAULT FALSE,
+    expires_in TIMESTAMPTZ NOT NULL DEFAULT NOW()+INTERVAL '7 days',
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    user_id UUID NOT NULL,
+    replaced_with TEXT,
+
+    CONSTRAINT fk_refresh_token_user
+    FOREIGN KEY (user_id)
+    REFERENCES users(id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE 
+);
+
+--CREATE INDEX FOR REFRESH TOKEN TABLE
+
+CREATE INDEX idx_user_id ON refresh_tokens(user_id);
+
+CREATE UNIQUE INDEX idx_refresh_hash
+ON refresh_tokens(refresh_hash);

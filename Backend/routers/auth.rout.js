@@ -1,0 +1,10 @@
+const express = require('express');
+const router = express.Router();
+const { verifyUserController, loginUserController, refreshUserController, logoutUserController } = require('../controllers/auth.controller');
+const { validateUserAuth } = require('../validator/auth.validator');
+const { userAuthValidationMiddleware } = require('../middlewares/validator.middleware');
+router.post('/verify',validateUserAuth,userAuthValidationMiddleware,verifyUserController);
+router.post('/login',validateUserAuth,userAuthValidationMiddleware,loginUserController);
+router.post('/refresh',refreshUserController);
+router.post('/logout',logoutUserController);
+module.exports = router;
