@@ -12,7 +12,7 @@ dist
 dist-ssr
 *.local
 
-public/*.glb
+
 
 # Editor directories and files
 .vscode/*
@@ -24,3 +24,6 @@ public/*.glb
 *.njsproj
 *.sln
 *.sw?
+public/space_station-transformed.glb
+public/vault.glb
+public/fox_model.glb
