@@ -117,7 +117,6 @@ const Hero = (props) => {
             urlB="/fox_model.glb"
             urlC="/vault.glb"
             color="#00f3ff"
-            scale={2}
           />
         </Center>
 

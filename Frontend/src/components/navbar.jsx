@@ -3,10 +3,7 @@
 
 import { useState } from 'react'
 
-const navigation = [
-  { name: 'Product', href: '/Product' },
-  { name: 'Company', href: '/Company' },
-]
+
 import { Link } from 'react-router-dom'
 
 export default function Navbar() {
@@ -15,14 +12,14 @@ export default function Navbar() {
       <header className="absolute inset-x-0 top-0 z-50">
         <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
           <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
+            <Link to="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Your Company</span>
-              {/* <img
+              <img
                 alt=""
-                src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-                className="h-8 w-auto"
-              /> */}
-            </a>
+                src="/logo.svg"
+                className="h-10 w-auto"
+              />
+            </Link>
           </div>
           <div className="flex lg:hidden">
             <button
@@ -35,14 +32,11 @@ export default function Navbar() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm/6 font-semibold text-white">
-                {item.name}
-              </a>
-            ))}
+          
+
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-            <Link to="/login" className="text-sm/6 font-semibold text-white">
+            <Link to="/twousers" className="text-sm/6 font-semibold text-white">
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
