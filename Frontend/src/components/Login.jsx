@@ -1,7 +1,14 @@
 import React from "react";
+import { Canvas } from "@react-three/fiber";
+import Vault from "./Vault";
+import { Suspense } from "react";
+import { Stage, OrbitControls } from "@react-three/drei";
+
+
 
 function Login() {
   return (
+    <>
     <div className="min-h-screen [background:radial-gradient(ellipse_at_center,_#1a2535_0%,_#080d14_100%)]">
       <div className="flex justify-start pl-70 items-center h-screen backdrop-blur-lg">
         <div className="flex flex-col gap-5 p-8 border border-gray-600 rounded-lg [background:radial-gradient(ellipse_at_center,_#0a1f38_0%,_#050c15_100%)] backdrop-blur-2xl w-96">
@@ -49,9 +56,19 @@ function Login() {
             value="Sign in with Facebook"
           />
         </div>
-        <p className="text-white text-2xl pl-80">use your thing here</p>
+        <Canvas camera={{ position: [-2, 0, 0], fov: 45 }}  style={{ width: "100vw", height: "100vh", position: "fixed", top:"0px", left:"0px", zIndex: "-1" }}>
+        <color attach="background" args={['#080d14']} />
+        <Suspense fallback={null}>
+          <Stage intensity={0.5} environment="city" shadows="contact">
+            <Vault position={[, 0, 0]} scale={1} />
+          </Stage>
+        </Suspense>
+        {/* Allows user to rotate/zoom */}
+        <OrbitControls  />
+      </Canvas>
       </div>
     </div>
+    </>
   );
 }
 
