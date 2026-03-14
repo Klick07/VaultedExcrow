@@ -26,6 +26,7 @@ async function login(username, password) {
   const accessTokenValue = data.accessToken || null;
   sessionStorage.setItem("refreshToken", refreshTokenValue);
   sessionStorage.setItem("accessToken", accessTokenValue);
+  return <Navigate to="/dashboardFreelancer" replace />;
   return true;
 }
 

@@ -2,8 +2,31 @@ import React from "react";
 import { useState } from "react";
 
 function Loginclient() {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  async function loginc(username, password) {
+    const res = await fetch(`${API}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username, password }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) {
+      console.log("Login failed");
+      return false;
+    }
+
+    console.log("Login successful");
+    const refreshTokenValue = data.refreshToken || null;
+    const accessTokenValue = data.accessToken || null;
+    sessionStorage.setItem("refreshToken", refreshTokenValue);
+    sessionStorage.setItem("accessToken", accessTokenValue);
+    return <Navigate to="/dashboardFreelancer" replace />;
+    return true;
+  }
+
   return (
     <div className="min-h-screen [background:radial-gradient(ellipse_at_center,_#1a2535_0%,_#080d14_100%)]">
       <div className="flex justify-start pl-70 items-center h-screen backdrop-blur-lg">
@@ -17,7 +40,7 @@ function Loginclient() {
               name="username"
               placeholder="Ex-Shivam Rawat"
               value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value)}
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
             />
           </label>
@@ -38,7 +61,14 @@ function Loginclient() {
           <input
             className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400 hover:bg-amber-400"
             type="submit"
-            value="Sign in as Client"
+            value="Sign in as Freelancer"
+            onClick={async (e) => {
+              e.preventDefault();
+              if (await loginc(username, password)) {
+                setUser(username);
+                setIsAuthenticated(true);
+              }
+            }}
           />
           <div className="flex items-center gap-3">
             <hr className="flex-1 border-gray-600" />
@@ -55,7 +85,7 @@ function Loginclient() {
             type="submit"
             value="Sign in with Facebook"
           />
-      </div>
+        </div>
         <p className="text-white text-2xl pl-80">use your thing here</p>
       </div>
     </div>

@@ -69,6 +69,7 @@ const posts = [
 ];
 
 
+
 const Hero = (props) => {
   const scrollRef = useRef();
   const sentences = [
@@ -120,7 +121,6 @@ const Hero = (props) => {
             color="#00f3ff"
           />
         </Center>
-
         <OrbitControls enableZoom={false} />
       </Canvas>
       <div className=" h-screen [background:radial-gradient(ellipse_at_center,_#1a2535_0%,_#080d14_100%)]">

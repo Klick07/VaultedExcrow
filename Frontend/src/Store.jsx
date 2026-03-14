@@ -2,9 +2,12 @@ import { create } from "zustand";
 
 const useStore = create((set) => ({
   showmodal: false,
-  setShowmodal: (value) => set({ showmodal: value }),
+  setShowmodal: (val) => set({ showmodal: val }),
   openModal: () => set({ showmodal: true }),
   closeModal: () => set({ showmodal: false }),
+  contracts: [],
+  addContract: (contract) =>
+    set((state) => ({ contracts: [...state.contracts, contract] })),
 }));
 
 export default useStore;

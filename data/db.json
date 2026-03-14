@@ -1,0 +1,227 @@
+{
+  "projectData": [
+    {
+      "id": "ecommerce-redesign",
+      "project_analysis": {
+        "project_type": "web_application",
+        "complexity": "high",
+        "estimated_total_days": 55
+      },
+      "milestones": [
+        {
+          "id": 1,
+          "objective": "Discovery & Requirements",
+          "description": "Gather detailed business requirements, define user personas, and create user stories.",
+          "deliverables": [
+            "Requirements Document (PDF)",
+            "User Stories backlog (CSV)"
+          ],
+          "acceptance_criteria": [
+            "Client signs off on Requirements Document"
+          ],
+          "estimated_days": 5,
+          "amount_percentage": 5
+        },
+        {
+          "id": 2,
+          "objective": "UX Design & Prototyping",
+          "description": "Create low-fi wireframes, iterate to high-fi mockups, and build an interactive prototype.",
+          "deliverables": [
+            "Low-fi Wireframes (Figma link)",
+            "High-fi Mockups (Figma link)",
+            "Interactive Prototype (Figma link)"
+          ],
+          "acceptance_criteria": [
+            "Client approves high-fi mockups for all screens",
+            "Prototype demonstrates navigation flow without errors"
+          ],
+          "estimated_days": 8,
+          "amount_percentage": 10
+        },
+        {
+          "id": 3,
+          "objective": "Frontend Development",
+          "description": "Implement the UI in React using the approved design system, ensuring responsive layout and state management.",
+          "deliverables": [
+            "GitHub repository URL with frontend code",
+            "Staging deployment URL for UI",
+            "Responsive design verification report (PDF)"
+          ],
+          "acceptance_criteria": [
+            "UI matches approved mockups within 5px tolerance on desktop and tablet",
+            "ESLint passes with 0 errors, unit test coverage >= 80%"
+          ],
+          "estimated_days": 15,
+          "amount_percentage": 30
+        },
+        {
+          "id": 4,
+          "objective": "Backend API & Database",
+          "description": "Develop RESTful API services, design the relational database schema, and implement authentication.",
+          "deliverables": [
+            "GitHub repository URL with backend code",
+            "OpenAPI (Swagger) specification file",
+            "Database schema diagram (PDF)"
+          ],
+          "acceptance_criteria": [
+            "All CRUD endpoints return correct HTTP status codes",
+            "Authentication flow conforms to OAuth2/JWT standards",
+            "Average response time < 200ms on staging"
+          ],
+          "estimated_days": 15,
+          "amount_percentage": 30
+        },
+        {
+          "id": 5,
+          "objective": "QA & Deployment",
+          "description": "Conduct functional, regression, and performance testing, fix defects, and deploy to production.",
+          "deliverables": [
+            "Comprehensive Test Report (PDF)",
+            "Production URL (HTTPS)",
+            "User Guide (PDF)"
+          ],
+          "acceptance_criteria": [
+            "All critical and high severity bugs resolved",
+            "Application accessible at production URL with 0 downtime"
+          ],
+          "estimated_days": 12,
+          "amount_percentage": 25
+        }
+      ]
+    },
+    {
+      "id": "logistics-gps-module",
+      "project_analysis": {
+        "project_type": "mobile_application",
+        "complexity": "medium",
+        "estimated_total_days": 40
+      },
+      "milestones": [
+        {
+          "id": 1,
+          "objective": "Architecture & GPS Integration Logic",
+          "description": "Define the background tracking services and battery optimization strategy.",
+          "deliverables": [
+            "Architecture Diagram",
+            "API Integration Spec"
+          ],
+          "acceptance_criteria": [
+            "GPS ping frequency meets battery constraints"
+          ],
+          "estimated_days": 10,
+          "amount_percentage": 25
+        },
+        {
+          "id": 2,
+          "objective": "Real-time Map UI",
+          "description": "Implement Google Maps/Mapbox integration with live vehicle markers.",
+          "deliverables": [
+            "React Native Map Component",
+            "WebSocket Service"
+          ],
+          "acceptance_criteria": [
+            "Marker moves smoothly without lag"
+          ],
+          "estimated_days": 12,
+          "amount_percentage": 25
+        },
+        {
+          "id": 3,
+          "objective": "Driver & Fleet Dashboard",
+          "description": "Build the admin dashboard for fleet managers to monitor all active vehicles.",
+          "deliverables": [
+            "Dashboard UI (Figma link)",
+            "Fleet API endpoints"
+          ],
+          "acceptance_criteria": [
+            "Dashboard loads within 2s with 50 active vehicles"
+          ],
+          "estimated_days": 10,
+          "amount_percentage": 30
+        },
+        {
+          "id": 4,
+          "objective": "Testing & Release",
+          "description": "End-to-end testing on device, performance profiling, and Play Store / App Store submission.",
+          "deliverables": [
+            "Test Report (PDF)",
+            "App Store submission confirmation"
+          ],
+          "acceptance_criteria": [
+            "No critical bugs on physical device testing",
+            "App approved by store review"
+          ],
+          "estimated_days": 8,
+          "amount_percentage": 20
+        }
+      ]
+    },
+    {
+      "id": "social-media-marketing",
+      "project_analysis": {
+        "project_type": "marketing_campaign",
+        "complexity": "low",
+        "estimated_total_days": 30
+      },
+      "milestones": [
+        {
+          "id": 1,
+          "objective": "Content Strategy & Calendar",
+          "description": "Develop 30 days of high-engagement content and creative assets.",
+          "deliverables": [
+            "Content Calendar (PDF)",
+            "Asset Folder (ZIP)"
+          ],
+          "acceptance_criteria": [
+            "All brand colors match guidelines"
+          ],
+          "estimated_days": 7,
+          "amount_percentage": 20
+        },
+        {
+          "id": 2,
+          "objective": "Ad Campaign Setup",
+          "description": "Configure Meta and LinkedIn ad sets for target demographics.",
+          "deliverables": [
+            "Ad Account Config Report",
+            "Pixel Verification"
+          ],
+          "acceptance_criteria": [
+            "Tracking pixels verified on staging"
+          ],
+          "estimated_days": 5,
+          "amount_percentage": 30
+        },
+        {
+          "id": 3,
+          "objective": "Campaign Launch & Monitoring",
+          "description": "Go live with all ad sets and content, monitor performance metrics daily.",
+          "deliverables": [
+            "Weekly Performance Report (PDF)",
+            "Live Analytics Dashboard URL"
+          ],
+          "acceptance_criteria": [
+            "CTR meets or exceeds 2% benchmark",
+            "Weekly report delivered every Monday"
+          ],
+          "estimated_days": 10,
+          "amount_percentage": 30
+        },
+        {
+          "id": 4,
+          "objective": "Final Report & Handover",
+          "description": "Compile full campaign results, insights, and recommendations for next cycle.",
+          "deliverables": [
+            "Final Campaign Report (PDF)",
+            "Recommendations Document (PDF)"
+          ],
+          "acceptance_criteria": [
+            "Client signs off on final report"
+          ],
+          "estimated_days": 8,
+          "amount_percentage": 20
+        }
+      ]
+    }
+  ]
+}
