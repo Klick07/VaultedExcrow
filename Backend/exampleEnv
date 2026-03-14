@@ -1,8 +1,0 @@
-DB_USER=username_of_psql
-DB_HOST=localhost
-DB_PASSWORD=password_dal_de_bsdk
-DB_PORT=5432
-DB_DATABASE=template
-ACCESSTOKENSECRET=random_string_dal_de
-GROQ_API_KEY=API_KEY_dal_de
-AI_MODEL=llama3-8b-8192

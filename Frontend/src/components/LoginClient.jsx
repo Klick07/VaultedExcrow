@@ -1,6 +1,9 @@
 import React from "react";
+import { useState } from "react";
 
 function Loginclient() {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
   return (
     <div className="min-h-screen [background:radial-gradient(ellipse_at_center,_#1a2535_0%,_#080d14_100%)]">
       <div className="flex justify-start pl-70 items-center h-screen backdrop-blur-lg">
@@ -13,6 +16,8 @@ function Loginclient() {
               type="text"
               name="username"
               placeholder="Ex-Shivam Rawat"
+              value={username}
+                  onChange={(e) => setUsername(e.target.value)}
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
             />
           </label>
@@ -21,6 +26,8 @@ function Loginclient() {
             <input
               type="password"
               placeholder="Ex-shivam@Rawat123"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
               name="password"
             />

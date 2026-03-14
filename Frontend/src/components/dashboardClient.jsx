@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import useStore from "../Store";
+
 
 const posts = [
   {
@@ -80,6 +82,10 @@ const stats = [
 ];
 
 export default function ClientDashboard() {
+  const showmodal = useStore((state) => state.showmodal);
+  const setShowmodal = useStore((state) => state.setShowmodal);
+  const closeModal = useStore((state) => state.closeModal);
+  const openModal = useStore((state)=>state.openModal)
   return (
     <div className="[background:radial-gradient(ellipse_at_center,_#1a2535_0%,_#080d14_100%)] py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -115,6 +121,7 @@ export default function ClientDashboard() {
           </h1>
           <div className="flex flex-col sm:flex-row gap-3 ">
             <button
+            onClick={openModal}
               className="flex-1 flex items-center justify-center px-4 py-2 border border-slate-300 rounded-lg text-gray-100 hover:bg-gray-800 text-l font-medium"
             > Add Contract
             </button>

@@ -68,6 +68,7 @@ const posts = [
   },
 ];
 
+
 const Hero = (props) => {
   const scrollRef = useRef();
   const sentences = [
@@ -146,7 +147,7 @@ const Hero = (props) => {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
                 href="#"
-                className="rounded-md bg-[#4169E1] px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="rounded-md bg-[#4169E1] px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-900"
               >
                 Get started
               </a>
@@ -251,7 +252,7 @@ const Hero = (props) => {
         <div className=" rounded-3xl p-12 md:p-16 text-white overflow-hidden relative">
           <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Why TrustVault?</h2>
+              <h2 className="text-3xl font-bold mb-6">Why VaultedEscrow?</h2>
               <ul className="space-y-4">
                 {[
                   "Eliminate scope creep with strict acceptance criteria.",

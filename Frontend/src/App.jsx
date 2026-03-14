@@ -1,5 +1,6 @@
 import Login from "./components/Login";
 import Navbar from "./components/navbar";
+
 import About from "./components/About";
 import ClientDashboard from "./components/dashboardClient";
 import FreelancerDashboard from "./components/dashboardFreelancer";
@@ -9,10 +10,15 @@ import LoginClient from "./components/LoginClient";
 import SignupClient from "./components/SignupClient";
 import Signup from "./components/Signup";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+import useStore from "./Store";
+import AddContract from "./components/addcontract";
 function App() {
+  const showmodal = useStore((state) => state.showmodal);
+  const setShowmodal = useStore((state)=>state.setShowmodal)
+
   return (
     <Router>
+      {showmodal && <AddContract />}
       <Navbar />
       <Routes>
         <Route path="/" element={<About />} />

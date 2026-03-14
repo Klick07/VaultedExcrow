@@ -10,7 +10,14 @@ const authRout = require('./routers/auth.rout');
 
 const metricsMiddleware = require("./middlewares/metrics.middleware");
 
+
 const app = express();
+const cors = require('cors');
+const corsOptions = {
+  origin: 'http://localhost:5173', // Your frontend origin
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+app.use(cors(corsOptions));
 
 const limiter = rateLimit({
     windowMs: 60 * 1000,

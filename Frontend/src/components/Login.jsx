@@ -1,12 +1,38 @@
 import React from "react";
-import { Canvas } from "@react-three/fiber";
 import Vault from "./Vault";
-import { Suspense } from "react";
-import { Stage, OrbitControls } from "@react-three/drei";
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls, Environment, ContactShadows } from '@react-three/drei'
+import { Suspense } from 'react'
+import { useState, useContext } from "react";
 
+
+const API = "http://localhost:3000/user/login";
+
+async function login(username, password) {
+  const res = await fetch(`${API}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    console.log("Login failed");
+    return false;
+  }
+
+  console.log("Login successful");
+  const refreshTokenValue = data.refreshToken || null;
+  const accessTokenValue = data.accessToken || null;
+  sessionStorage.setItem("refreshToken", refreshTokenValue);
+  sessionStorage.setItem("accessToken", accessTokenValue);
+  return true;
+}
 
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <>
     <div className="min-h-screen [background:radial-gradient(ellipse_at_center,_#1a2535_0%,_#080d14_100%)]">
@@ -20,6 +46,8 @@ function Login() {
               type="text"
               name="username"
               placeholder="Ex-Shivam Rawat"
+              value={username}
+                  onChange={(e) => setUsername(e.target.value)}
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
             />
           </label>
@@ -27,9 +55,11 @@ function Login() {
             <p className="text-gray-500">Password:</p>
             <input
               type="password"
-              placeholder="Ex-shivam@Rawat123"
+              placeholder="Ex-shivam@Rawat"
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
               name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             <a href="#" className="text-sm text-blue-400 hover:text-blue-300">
               Forgot your password?
@@ -39,6 +69,13 @@ function Login() {
             className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400 hover:bg-amber-400"
             type="submit"
             value="Sign in as Freelancer"
+            onClick={async (e) => {
+                e.preventDefault();
+                if (await login(username, password)) {
+                  setUser(username);
+                  setIsAuthenticated(true);
+                }
+              }}
           />
           <div className="flex items-center gap-3">
             <hr className="flex-1 border-gray-600" />
@@ -56,16 +93,24 @@ function Login() {
             value="Sign in with Facebook"
           />
         </div>
-        <Canvas camera={{ position: [-2, 0, 0], fov: 45 }}  style={{ width: "100vw", height: "100vh", position: "fixed", top:"0px", left:"0px", zIndex: "-1" }}>
+    <div style={{ width: '100vw', height: '100vh', position: 'fixed', top: 0, left: 0, zIndex: -1 }}>
+      <Canvas camera={{ position: [100, 0, 5], fov: 50 }}>
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
+        <pointLight position={[-10, -10, -10]} />
+        
         <Suspense fallback={null}>
-          <Stage intensity={0.5} environment="city" shadows="contact">
-            <Vault position={[0, 0, 0]} scale={1} />
-          </Stage>
+          <Vault position={[0, 0, 0]} scale={10.5} />
+          <Environment preset="city" />
         </Suspense>
-        {/* Allows user to rotate/zoom */}
-        <OrbitControls enableZoom={false} enableRotate={false} />
+
+        <OrbitControls 
+          enableZoom={false}
+          enablePan={false} 
+          />
       </Canvas>
-      </div>
+    </div>
+          </div>
     </div>
     </>
   );

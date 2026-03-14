@@ -1,8 +1,41 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Loginclient from "./LoginClient";
+import { useState } from "react";
+const API = "http://localhost:3000/user";
+
+async function signupClient(username, password) {
+  const res = await fetch(`${API}/verify`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password, role: "client" }),
+  });
+
+  const data = await res.json();
+  if (!res.ok) {
+    console.log("Signup failed");
+    return false;
+  }
+
+  console.log("Signup successful");
+
+  const ress = await fetch(`${API}/login`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, password }),
+  });
+
+  const dataa = await ress.json();
+  const refreshTokenValue = dataa.refreshToken || null;
+  const accessTokenValue = dataa.accessToken || null;
+  sessionStorage.setItem("refreshToken", refreshTokenValue);
+  sessionStorage.setItem("accessToken", accessTokenValue);
+
+  return true;
+}
 
 function SignupClient() {
+   const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
   return (
     <div className="min-h-screen [background:radial-gradient(ellipse_at_center,_#1a2535_0%,_#080d14_100%)]">
       <div className="flex justify-start pl-70 items-center h-screen backdrop-blur-lg">
