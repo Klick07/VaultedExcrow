@@ -19,7 +19,7 @@ function Login() {
             <input
               type="text"
               name="username"
-              placeholder="Enter your username"
+              placeholder="Ex-Shivam Rawat"
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
             />
           </label>
@@ -27,7 +27,7 @@ function Login() {
             <p className="text-gray-500">Password:</p>
             <input
               type="password"
-              placeholder="*****"
+              placeholder="Ex-shivam@Rawat123"
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
               name="password"
             />
@@ -57,14 +57,13 @@ function Login() {
           />
         </div>
         <Canvas camera={{ position: [-2, 0, 0], fov: 45 }}  style={{ width: "100vw", height: "100vh", position: "fixed", top:"0px", left:"0px", zIndex: "-1" }}>
-        <color attach="background" args={['#080d14']} />
         <Suspense fallback={null}>
           <Stage intensity={0.5} environment="city" shadows="contact">
-            <Vault position={[, 0, 0]} scale={1} />
+            <Vault position={[0, 0, 0]} scale={1} />
           </Stage>
         </Suspense>
         {/* Allows user to rotate/zoom */}
-        <OrbitControls  />
+        <OrbitControls enableZoom={false} enableRotate={false} />
       </Canvas>
       </div>
     </div>

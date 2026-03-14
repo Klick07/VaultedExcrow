@@ -14,7 +14,7 @@ function SignupClient() {
             <input
               type="text"
               name="username"
-              placeholder="Enter your username"
+              placeholder="Ex-Shivam Rawat"
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
             />
           </label>
@@ -22,7 +22,7 @@ function SignupClient() {
             <p className="text-gray-500">Password:</p>
             <input
               type="password"
-              placeholder="*****"
+              placeholder="Ex-shivam@Rawat123"
               className="w-full px-3 py-2 rounded-md bg-gray-900 border border-gray-600 text-white focus:outline-none focus:border-gray-400"
               name="password"
             />
